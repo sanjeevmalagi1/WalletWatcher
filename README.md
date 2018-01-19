@@ -1,7 +1,9 @@
-# [Wallet Watcher Assignment](http://lbd-react.creative-tim.com/)
+# [Wallet Watcher Assignment](http://wallet-watcher.bitballoon.com/)
+
+![Wallet Watcher](http://wallet-watcher.bitballoon.com/ScreenShot.jpg)
 
 
-**[Wallet Watcher Assignment](http://lbd-react.creative-tim.com/)** is a bitcoin wallet watcher application.
+**[Wallet Watcher Assignment]((http://wallet-watcher.bitballoon.com/)** is a bitcoin wallet watcher application.
 This web app uses [smartbit api](https://api.smartbit.com.au/). It is built on top of [React Bootstrap](https://react-bootstrap.github.io/), using [Light Bootstrap Dashboard React](http://lbd-react.creative-tim.com/) and it is fully responsive. 
 
 ##Opeartion: 
