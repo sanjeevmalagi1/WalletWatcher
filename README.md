@@ -69,7 +69,8 @@ Wallet Wather
     │   ├── StatsCard
     │   │   └── StatsCard.jsx
     │   └── TransactionsTable
-    │      └── TransactionsTable.jsx
+    │      |── TransactionsTable.jsx
+    │      └── TransactionsRow.jsx
     ├── containers
     │   |── App
     │   |    └── App.jsx
