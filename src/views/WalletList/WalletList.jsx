@@ -18,6 +18,10 @@ class WalletList extends Component {
         this.renderWallets = this.renderWallets.bind(this);
     }
 
+    componentDidMount(){
+        document.title = `ZPX | Wallet List`;
+    }
+
     addWallet(){
         const { addWallet } = this.props;
         swal({
@@ -41,7 +45,7 @@ class WalletList extends Component {
                     swal("Failed", "Wallet not found", "error");
                 }
             });
-            
+
         })
         .catch(e=>{
             swal("Failed", "Wallet not found", "error");
@@ -50,7 +54,7 @@ class WalletList extends Component {
 
     renderWallets(){
         const { wallets } = this.props;
-        
+
         return _.map(wallets, (wallet,index)=>{
             return (
                 <Col key={index} lg={4} sm={6}>
@@ -65,14 +69,14 @@ class WalletList extends Component {
                         />
                     </Link>
                 </Col>
-            );   
+            );
         })
     }
 
     selectWallet(wallet){
         console.log(wallet);
     }
-    
+
     render() {
 
         return (
@@ -91,7 +95,7 @@ class WalletList extends Component {
                                     <Row>
                                         <Col>
                                             <div className="icon-big text-center icon-warning">
-                                            <i className="fa fa-plus text-warning"></i> 
+                                            <i className="fa fa-plus text-warning"></i>
                                             </div>
                                         </Col>
                                         <Col>
@@ -103,10 +107,10 @@ class WalletList extends Component {
                                 </div>
                             </div>
                         </Col>
-                        { this.renderWallets() }       
-                        
+                        { this.renderWallets() }
+
                     </Row>
-                    
+
                 </Grid>
             </div>
         );
@@ -119,6 +123,5 @@ function mapStateToProps(state){
         wallets:state.wallets
     };
   }
-  
+
   export default connect(mapStateToProps,{ addWallet })(WalletList);
-  

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { RiseLoader } from 'react-spinners';
+import swal from 'sweetalert';
 
 import _ from 'lodash'
 import moment from 'moment';
@@ -18,27 +19,30 @@ class Dashboard extends Component {
     componentDidMount(){
         document.title = `ZPX | Wallet Transactions`;
     }
-    
+
     render() {
-        const { wallet,addWallet } = this.props;
+        const { wallet,addWallet,history } = this.props;
         const { params } = this.props.match;
-        
+
         if(_.isEmpty(wallet)){
-            
+
             addWallet({
                 id:params.address,
                 addedOn : moment()
             }, success => {
-                console.log(success);
-                
-            });
+                if(!success){
+                   swal("Failed", "Wallet not found", "error");
+                   history.push('/wallets');
+                }
+            })
+
             return (
                 <div className="text-center loader">
                     <RiseLoader size={25} />
                 </div>
             );
         }
-        
+
         return (
             <div className="content">
                 <Grid fluid>
@@ -80,9 +84,9 @@ class Dashboard extends Component {
                         <Col >
                             <Card
                                 id="chartHours"
-                                title={`Transactions of Wallet (${wallet.address })`}
+                                title={`Transactions of Wallet`}
                                 content={ <TransactionsTable transactions={wallet.transactions} /> }
-                                
+
                             />
                         </Col>
                     </Row>
@@ -98,6 +102,5 @@ function mapStateToProps(state,props){
         wallet:state.wallets[address]
     };
 }
-  
+
 export default connect(mapStateToProps,{ addWallet })(Dashboard);
-  
